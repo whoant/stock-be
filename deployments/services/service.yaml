@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: stock-be
-    tier: api
   ports:
     - port: 3001
       targetPort: 3000
