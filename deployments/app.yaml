@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-be
+  namespace: stock-app
+  labels:
+    app: stock-be
+    tier: api
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: stock-be
+      labels:
+        app: stock-be
+        tier: api
+    spec:
+      nodeSelector:
+        ram: high
+      containers:
+        - name: stock-be
+          image: ghcr.io/whoant/stock-be:VERSION
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "300Mi"
+              cpu: "300m"
+            requests:
+              memory: "200Mi"
+              cpu: "200m"
+          envFrom:
+            - secretRef:
+                { name: secret.stock-be }
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: stock-be

@@ -1,6 +1,6 @@
 FROM node:16-alpine
 
-RUN yarn global add nodemon
+RUN #yarn global add nodemon
 
 ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
