@@ -23,11 +23,11 @@ spec:
             - containerPort: 3000
           resources:
             limits:
-              memory: "400Mi"
-              cpu: "400m"
-            requests:
               memory: "200Mi"
               cpu: "200m"
+            requests:
+              memory: "100Mi"
+              cpu: "100m"
           envFrom:
             - secretRef:
                 { name: secret.stock-be }
