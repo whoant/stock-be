@@ -6,6 +6,7 @@ const kLineChartsRoute = require('./kLineCharts.route');
 const reportsRoute = require('./reports.route');
 const stocksRoute = require('./stocks.route');
 const userRoute = require('./users.route');
+const internalUserRoute = require('./internalUsers.route');
 
 module.exports = app => {
     app.use('/api/v1/auth', authRoute);
@@ -16,4 +17,5 @@ module.exports = app => {
     app.use('/api/v1/reports', reportsRoute);
     app.use('/api/v1/stocks', stocksRoute);
     app.use('/api/v1/users', userRoute);
+    app.use('/api/v1/internal_users', internalUserRoute);
 };

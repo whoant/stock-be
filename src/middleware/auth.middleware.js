@@ -10,6 +10,11 @@ exports.selectUser = permission => {
         }
         const data = await verifyToken(token.split(' ')[1]);
         if (permission === 'ADMIN') {
+            const { rows } = await db.query(`select * from fn_get_internal_user('${data.username}');`);
+            if (rows.length === 0) {
+                throw new Error('Không đủ quyền truy cập');
+            }
+            res.locals.user = rows[0];
             return next();
         }
 
