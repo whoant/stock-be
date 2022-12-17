@@ -6,6 +6,8 @@ const stocksController = require('../controllers/stocks/stocks.controller');
 
 router.post('/', stocksController.createStock);
 
+router.get('/', stocksController.getStocks);
+
 router.post('/:id/mark_as_disable', stocksController.disableStock);
 
 router.post('/:id/mark_as_enable', stocksController.enableStock);

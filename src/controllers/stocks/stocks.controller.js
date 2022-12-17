@@ -11,6 +11,14 @@ exports.createStock = catchAsync(async(req, res, next) => {
     });
 });
 
+exports.getStocks = catchAsync(async(req, res, next) => {
+    const { rows } = await db.query(`select * from fb_get_stocks();`);
+
+    successResponse(req, res, {
+        stocks: rows
+    });
+});
+
 exports.disableStock = catchAsync(async(req, res, next) => {
     const { id } = req.params;
     await db.query(`call proc_disable_stock('${id}');`);
@@ -28,3 +36,5 @@ exports.enableStock = catchAsync(async(req, res, next) => {
         message: 'List thành công'
     });
 });
+
+
