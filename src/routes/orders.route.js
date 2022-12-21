@@ -11,6 +11,8 @@ router.get('/getLatestOrders', ordersController.getLatestOrders);
 
 router.post('/', authMiddleware.selectUser('USER'), ordersController.createOrder);
 
+router.post('/cancel', authMiddleware.selectUser('USER'), ordersController.cancelOrder);
+
 router.get('/enabled', authMiddleware.selectUser('USER'), ordersController.getEnabledOrders);
 
 router.get('/history', authMiddleware.selectUser('USER'), ordersController.getHistoryOrders);
