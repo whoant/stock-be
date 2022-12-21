@@ -60,7 +60,7 @@ exports.getHistoryMatchingOrders = catchAsync(async(req, res, next) => {
 });
 
 exports.cancelOrder = catchAsync(async(req, res, next) => {
-    const { orderId } = req.query;
+    const { orderId } = req.body;
     await db.query(`call proc_cancel_order('${orderId}');`);
 
     successResponse(req, res, {
